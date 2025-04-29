@@ -31,6 +31,9 @@ main :: () {
                     free(str);
                 case .WINDOW; // @Incomplete: Event_Type.WINDOW events are not generated yet on any of the platforms.
                 case .MOUSE_WHEEL;
+                case .WINDOW_MAXIMIZE;
+                case .WINDOW_MINIMIZE;
+                case .WINDOW_RESTORE;
             }
         }
 

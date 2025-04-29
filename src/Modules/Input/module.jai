@@ -26,6 +26,9 @@ Event_Type :: enum u32 {  // If we set this to u8, our packing will stop matchin
     QUIT        :: 5;
     DRAG_AND_DROP_FILES :: 6;
     TOUCH       :: 7;
+    WINDOW_MINIMIZE :: 8;
+    WINDOW_RESTORE :: 9;
+    WINDOW_MAXIMIZE :: 10;
 }
 
 Key_Current_State :: enum_flags u32 {

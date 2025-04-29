@@ -298,11 +298,24 @@ MyWindowProc :: (hwnd: HWND, message: u32,
               case SIZE_MAXIMIZED;
                 window_minimized = false;
                 add_resize_record(hwnd);
+                event: Event;
+                event.type = .WINDOW_MAXIMIZE;
+                array_add(*events_this_frame, event);
               case SIZE_RESTORED;
-                  if window_minimized window_minimized = false;
+                  if window_minimized {
+                    window_minimized = false;
+
+                    event: Event;
+                    event.type = .WINDOW_RESTORE;
+                    array_add(*events_this_frame, event);
+                  }
                   else add_resize_record(hwnd);
               case SIZE_MINIMIZED;
                   window_minimized = true;
+
+                  event: Event;
+                  event.type = .WINDOW_MINIMIZE;
+                  array_add(*events_this_frame, event);
             }
             return 0;
           case WM_MOVE;

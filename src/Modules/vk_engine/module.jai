@@ -58,18 +58,14 @@ run::(engine: *VulkanEngine){
         update_window_events();
         for events_this_frame
         {
-			// close the window when user alt-f4s or clicks the X button
-            if it.type == .QUIT then bQuit = true;
-			else if it.type == .WINDOW {
-				//TO DO
-				/*
-                if (e.window.event == SDL_WINDOWEVENT_MINIMIZED) {
-                    stop_rendering = true;
-                }
-                if (e.window.event == SDL_WINDOWEVENT_RESTORED) {
-                    stop_rendering = false;
-                }
-				*/
+            if it.type == {
+                // close the window when user alt-f4s or clicks the X button
+                case .QUIT;
+                    bQuit = true;
+                case .WINDOW_MINIMIZE;
+                    engine.stop_rendering = true;
+                case .WINDOW_RESTORE;
+                    engine.stop_rendering = false;
             }
         }
 
